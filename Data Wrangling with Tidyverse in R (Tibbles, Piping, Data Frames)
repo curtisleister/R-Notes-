@@ -1,0 +1,39 @@
+URL for Notes -> https://cal-poly-advanced-r.github.io/STAT-431/Canvas_Pages/Data_Wrangling.html
+
+Purpose of data wrangling 
+a. Spot, reshape and derive variables. 
+b. Join multiple data sets together for easier use 
+
+Two main packages -> dplyr, tidyverse
+
+TBL/Tibble - better way to look at large datasets based on RStudio limitations 
+tbl_df(diamonds)
+Tibbles generally do less than normal built-in R dataframes 
+
+View Fuction - look at entire dataset, opens up a new window above similar to an Excel file (usually in top left of RStudio window)
+
+Pipe operation - feeds previous dataframe into next statement 
+Comes from magrittr (call this) but imported from dplyr. Allows us to "pipe" in the first operator of SELECT
+diamonds$x %>% mean()
+As chains get longer, better to use this to continue your code. Better for short, linear and interchangable lines of code that require some repetition. 
+
+Dplyr - faster and easier to read for wrangling thatn Base R 
+Five main dplyr verbs 
+- Mutate 
+- Filter
+- Arrange
+- Select 
+- Summarize 
+
+Example using Titanic dataset 
+data = data.frame(Titanic)
+Ex: find raw number of passengers 
+num_pass = summarise(data, num_pass=sum(Freq))
+
+Group By 
+Ex: Numbers of passengers by class? 
+num_pass_by_class = data %>% 
++ group_by(data$Class) %>% 
++ summarise(num_pass=sum(Freq))
+
+
