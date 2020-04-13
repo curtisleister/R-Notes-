@@ -10,7 +10,7 @@ TBL/Tibble - better way to look at large datasets based on RStudio limitations
 tbl_df(diamonds)
 Tibbles generally do less than normal built-in R dataframes 
 
-View Fuction - look at entire dataset, opens up a new window above similar to an Excel file (usually in top left of RStudio window)
+View Fuction - look at entire dataset, opens up a new window above similar to an Excel file (usually in top left of RStudio window).
 
 Pipe operation - feeds previous dataframe into next statement 
 Comes from magrittr (call this) but imported from dplyr. Allows us to "pipe" in the first operator of SELECT
@@ -19,7 +19,7 @@ As chains get longer, better to use this to continue your code. Better for short
 
 Dplyr - faster and easier to read for wrangling thatn Base R 
 Five main dplyr verbs 
-- Mutate 
+- Mutate
 - Filter
 - Arrange
 - Select 
@@ -27,7 +27,7 @@ Five main dplyr verbs
 
 Example using Titanic dataset 
 data = data.frame(Titanic)
-Ex: find raw number of passengers 
+Ex: find raw number of passengers in a summarise function
 num_pass = summarise(data, num_pass=sum(Freq))
 
 Group By 
@@ -36,4 +36,19 @@ num_pass_by_class = data %>%
 + group_by(data$Class) %>% 
 + summarise(num_pass=sum(Freq))
 
+Select - Only select columns from a dataset into a smaller set 
+date_gend_freq = data %>% 
++ select(Sex, Age, Freq)
+
+Mutate - Edit an existing column by manipulating and creating a new one 
+data2 = data %>% 
++ mutate(Freq * 10)
+
+Filter - Parse out existing values from column(s) 
+data_female = data %>% 
++ filter(Sex == "Female")
+
+Arrange - Another way to say "sort" to arrange data in a column. Defaults to ascending 
+data_arrange = data %>% 
++ arrange(Freq) or arrange(desc(Freq))
 
