@@ -40,7 +40,7 @@ Select - Only select columns from a dataset into a smaller set
 date_gend_freq = data %>% 
 + select(Sex, Age, Freq)
 
-Mutate - Edit an existing column by manipulating and creating a new one 
+Mutate - Edit an existing column by manipulating and creating a new one. This is where we would do custom calculations that we would want to use as a complement to existing variable columns 
 data2 = data %>% 
 + mutate(Freq * 10)
 
