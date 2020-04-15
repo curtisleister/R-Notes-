@@ -1,0 +1,15 @@
+Tidyverse concept 
+Each variable must have its own column.
+Each observation must have its own row.
+Each value must have its own cell.
+- Most built-in R functions work in "tidy" forms of vectorized data 
+Pivot Longer 
+- Needed when column names are not structured, but names of variables 
+table4a %>% 
+  pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "cases")
+  
+Pivot Wider - needed when an observation is scattered across multiple rows (one to many relationship in a file down rows, similar to MSD data exports from work). 
+table2 %>%
+    pivot_wider(names_from = type, values_from = count)
+    
+ 
