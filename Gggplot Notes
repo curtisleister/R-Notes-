@@ -11,5 +11,68 @@ First argument of ggplot() is always data, which just creates an empty graph. Ne
 geom_point() = start of the scatterplot 
 geom_point takes a "mapping" argument first, followed by "aes" to pull in variables for x and y axis. 
 
+Add a third dimension to a scatterplot by mapping to an aes() function
+Creates a visual property/legend to the points on the plot (size/shape/color) 
+-Ex: map a variable to color. Ggplot automatically "scales" an appropriate color to each variable
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+  
+ Different Aesthetics 
+ Color - self-explanatory 
+ Size - self-explanatory (not always advised) 
+ 
+ ##Alpha - shade/gradient 
+ ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
+ Shape - Adds a different shape (ggpplot only uses six shapes max)
+ 
+Possible to set an entire color code for your plot aesthetic by mapping the aes function outside of parenthesis, where the aesthetic variable is set
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+  
+Categorical R variables == discrete in Tableau, convey non-numeric values. Class is a categorical variable in the dataset.  
+Continuous == continuous in tableau, convey metrics. MPG is a continuous variable in the dataset. 
+
+Facets - Wraps are subplots that show different frames of the data. Helps for smaller datasets where you can plot continuous data without too much stuff getting cluttered, helps segment out data. Probably not feasible for huge datasets. 
+First argument is to start a formula "~" followed by a discrete variable. 
+
+Facet grids are plotting two variables, require two discrete 
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_grid(drv ~ cyl)
+  
+Geoms - change displays of the data. 
+ex: geom_smooth adds in a line. Can't change the shape of a line, but we can change the line type. 
+ggplot(data = mpg) + 
+  geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
+  
+
+##"Group" or "Color" aesthetic - adds multiple objects into the line, or adds a color variable to the group
+ggplot(data = mpg) +
+  geom_smooth(mapping = aes(x = displ, y = hwy, group = drv))
+  
+ggplot(data = mpg) +
+  geom_smooth(
+    mapping = aes(x = displ, y = hwy, color = drv),
+    show.legend = FALSE
+  )
+  
+##Add in multiple geom() commands into the same plot. Good idea to run mapping first to set global varibales for both geom functions, but you can run individual mapping to customize each line/plot. 
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  geom_smooth()
+ 
+
+
+
+  
+  
+
+ 
+ 
+ 
+ 
+  
+
 
   
