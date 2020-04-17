@@ -61,6 +61,40 @@ ggplot(data = mpg) +
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
   geom_point() + 
   geom_smooth()
+  
+- Setting the SE argument in geom_smooth() sets a confidence interval around the line being drawn 
+
+1 - First graph code recreation -> scatterplot with a line graph, larger plot marks and line thickness
+ggplot() + geom_point(data = mpg, aes(x = displ, y = hwy), size = 4) + geom_smooth( data = mpg, aes(x=displ, y = hwy, color = "blue"), se = FALSE, color = "blue", size = 2)
+
+2 - Second graph code recreation -> same scatterplot with multiple lines displaying the drivetrain group 
+ggplot() + geom_point(data = mpg, aes(x = displ, y = hwy), size = 4) + geom_smooth( data = mpg, aes(x=displ, y = hwy, color = "blue", group = drv), se = FALSE, color = "blue", size = 2)
+
+3 - Third graph code recreation -> scatterplot with grouped multiple lines showing drivetrain, all colored by drivetrain 
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+         geom_point(mapping = aes(color = drv), size = 2) + 
+       geom_smooth(mapping = aes(color = drv, group = drv), size = 2)
+       
+4 - Fourth graph code recreation -> scatterplot with grouped multiple lines of different type, same color. 
+
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+                      geom_point(mapping = aes(color = drv), size = 4) + 
+                      geom_smooth(mapping = aes(linetype = drv), size = 2,  se = FALSE)
+                      
+Bar Charts in R 
+
+geom_bar() function 
+
+Bar charts auto-calculate new values from data (aka count, frequency, etc.) 
+
+
+
+
+
+
+
+
+  
  
 
 
