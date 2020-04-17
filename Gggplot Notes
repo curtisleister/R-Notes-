@@ -85,7 +85,9 @@ Bar Charts in R
 
 geom_bar() function 
 
-Bar charts auto-calculate new values from data (aka count, frequency, etc.) 
+Bar charts auto-calculate new values from data (aka count, frequency, etc.). Algorithm used to calculate is called a "stat". 
+Examples of stats are raw counts/totals and percents of total (props). 
+
 
 
 
