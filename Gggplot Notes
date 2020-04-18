@@ -88,6 +88,30 @@ geom_bar() function
 Bar charts auto-calculate new values from data (aka count, frequency, etc.). Algorithm used to calculate is called a "stat". 
 Examples of stats are raw counts/totals and percents of total (props). 
 
+##Position adjustments using fill for bar charts 
+a. Identity
+b. Dodge 
+c. Fill
+d. Jitter
+
+##Fill makes all bars the same size, but makes it easier to see proportions across the groups 
+ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = cut))
+ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = clarity))
+
+## Alpha can be used to add transparency in the bars to differentiate 
+ggplot(data = diamonds, mapping = aes(x=cut, fill = clarity)) + geom_bar( alpha = 1/5, position = "identity")
+
+#Dodge creates stacked bars in groups/adding them besides each other to compare individual values 
+ggplot(data= diamonds) + geom_bar(mapping = aes(x = cut, fill = clarity), position = "dodge")
+
+## Jitter creates space between overlapping plot points in a scatter that wouldn't otherwise be visible.
+## Adds random noise to each data point to create space. Makes graph somewhat less accurate but more insightful. 
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
+geom_point(position = "jitter"): geom_jitter()
+
+
+
+
 
 
 
